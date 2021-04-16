@@ -7,6 +7,7 @@ class Shared::LayoutHead < BaseComponent
     head do
       utf8_charset
       title "My App - #{@page_title}"
+      empty_tag "link", rel: "stylesheet", href: "https://unpkg.com/tailwindcss@2.1.1/dist/tailwind.min.css"
       css_link asset("css/app.css")
       js_link asset("js/app.js"), type: "application/javascript"
       csrf_meta_tags
