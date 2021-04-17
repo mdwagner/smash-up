@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+
+LUCKY_CLI_TAG=v0.27.0
+LUCKY_CLI=https://github.com/luckyframework/lucky_cli.git
+TMP_LUCKY_CLI_DIR=/tmp/lucky_cli
+git clone -b $LUCKY_CLI_TAG --quiet $LUCKY_CLI $TMP_LUCKY_CLI_DIR > /dev/null 2>&1
+PREVIOUS_DIR=$PWD
+cd $TMP_LUCKY_CLI_DIR
+shards install -q
+crystal build --release src/lucky.cr -o $PREVIOUS_DIR/bin/lucky
+cd $PREVIOUS_DIR
+rm -rf $TMP_LUCKY_CLI_DIR

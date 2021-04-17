@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+SENTRY_CMD=https://raw.githubusercontent.com/samueleaton/sentry/master/install.cr
+curl -fsSLo- $SENTRY_CMD | crystal eval
+mv sentry bin
+rm -rf dev

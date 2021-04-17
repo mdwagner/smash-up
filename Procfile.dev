@@ -1,1 +1,2 @@
-web: lucky watch
+web: ./bin/sentry
+proxy: ./scripts/run_browser_sync

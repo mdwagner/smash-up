@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+while [ 1 ]; do
+  if lsof -i :5000 -t > /dev/null; then
+    break
+  fi
+done
+
+browser-sync start -c bs-config.js --port 5001 -p 127.0.0.1:5000
