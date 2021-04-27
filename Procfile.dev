@@ -1,2 +1,2 @@
-web: ./bin/sentry
-proxy: ./scripts/run_browser_sync
+web: lucky watch --reload-browser
+assets: yarn watch

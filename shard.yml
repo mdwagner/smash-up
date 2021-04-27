@@ -14,6 +14,9 @@ dependencies:
   lucky:
     github: luckyframework/lucky
     version: ~> 0.27.0
+  carbon:
+    github: luckyframework/carbon
+    version: ~> 0.1.4
   dotenv:
     github: gdotdesign/cr-dotenv
     version: ~> 1.0.0

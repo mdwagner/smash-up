@@ -5,6 +5,4 @@ Dotenv.load?
 # Require your shards here
 require "avram"
 require "lucky"
-require "http"
-require "base64"
-require "uri"
+require "carbon"

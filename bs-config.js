@@ -15,7 +15,10 @@ module.exports = {
       }
     }
   },
-  files: ["bin/start_server"],
+  files: [
+    "public/css/**/*.css",
+    "public/js/**/*.js"
+  ],
   watchEvents: ["change"],
   open: false,
   browser: "default",
