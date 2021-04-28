@@ -2,12 +2,14 @@ class SmashUpGenerator < BaseComponent
   def render
     spotify_token = fetch_spotify_access_token
     artist = random_artist_spotify(spotify_token).try { |x| x["name"].as_s } || ""
-    song = random_song_spotify(spotify_token, artist).try { |x| x["name"].as_s } || ""
+    song, song_by_artists = random_song_spotify(spotify_token, artist).try do |x|
+      [ x["name"].as_s, x["artists"].as_a.map { |t| t["name"].as_s }.join(", ") ]
+    end || ""
 
     div class: "flex flex-row space-x-5 text-lg" do
       span artist
       span "+"
-      span song
+      span "#{song} by #{song_by_artists}"
     end
   end
 
