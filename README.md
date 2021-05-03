@@ -5,7 +5,8 @@ This is a project written using [Lucky](https://luckyframework.org). Enjoy!
 ### Setting up the project
 
 1. [Install required dependencies](https://luckyframework.org/guides/getting-started/installing#install-required-dependencies)
-1. Run `lucky dev` to start the app
+1. (Optional) [Install doppler](https://docs.doppler.com/docs/enclave-installation)
+1. Run `./scripts/start_dev` to start the app
 
 ### Learning Lucky
 
