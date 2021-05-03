@@ -1,0 +1,16 @@
+#!/bin/sh
+
+command_not_found() {
+  ! command -v $1 > /dev/null
+  return $?
+}
+
+CMD="hivemind Procfile.dev"
+
+if command_not_found "doppler"; then
+  command $CMD
+elif [ "$1" = "quick" ]; then
+  doppler run --fallback-only -- $CMD
+else
+  doppler run -- $CMD
+fi
