@@ -3,55 +3,38 @@ abstract class MainLayout
 
   abstract def content
 
-  def page_title
-    "Welcome to SmashUp"
-  end
-
-  def render_custom_head
-  end
-
   def render
     html_doctype
 
     html lang: "en" do
-      mount Shared::LayoutHead, page_title: page_title, context: context do
-        render_custom_head
-      end
+      mount Shared::LayoutHead, page_title: "Welcome to SmashUp", context: context
 
-      body class: "flex flex-col h-screen" do
-        nav class: "bg-indigo-700 py-3 px-4 flex justify-between items-center" do
-          div class: "flex items-center space-x-0.5 sm:space-x-3" do
-            img src: asset("images/Spotify-512.png"), alt: "Spotify logo", width: "55", class: "p-2"
-            a href: "#", class: "inline-block p-2 text-indigo-200 hover:text-indigo-100" do
-              text "Home"
-            end
-            a href: "#", class: "inline-block p-2 text-indigo-200 hover:text-indigo-100" do
-              text "About"
+      body class: "flex flex-col h-screen bg-gray-100" do
+        nav class: "bg-green-700 py-3 px-4 flex justify-between items-center" do
+          div class: "flex items-center" do
+            link to: Home::Index, class: "inline-block p-2 text-indigo-200 hover:text-indigo-100" do
+              img src: asset("images/Spotify-512.png"), alt: "Spotify logo", width: "55"
             end
           end
 
           div class: "flex items-center space-x-1 sm:space-x-3" do
-            a href: "#", class: "inline-block p-2 text-indigo-200 hover:text-indigo-100" do
-              text "Login"
-            end
-            a href: "#", class: "inline-block py-2 px-4 whitespace-nowrap text-yellow-700 bg-yellow-400 rounded hover:bg-yellow-300 hover:text-yellow-800 transition ease-in duration-150" do
-              text "Sign Up"
-            end
+            link "Login", to: Auth::Login::New, class: "inline-block p-2 text-indigo-200 hover:text-indigo-100"
+            link "Sign Up", to: Auth::SignUp::New, class: "inline-block py-2 px-4 whitespace-nowrap text-yellow-700 bg-yellow-400 rounded hover:bg-yellow-300 hover:text-yellow-800 transition ease-in duration-150"
           end
         end
 
-        mount Shared::FlashMessages, context.flash
+        mount Shared::FlashMessages, flash: context.flash
 
         main class: "flex-1 p-4" do
           content
         end
 
-        footer class: "p-6 bg-indigo-900 text-indigo-400 flex justify-center flex-shrink-0" do
+        footer class: "p-6 bg-green-900 text-indigo-300 flex justify-center flex-shrink-0" do
           div class: "flex items-center" do
             text "Copyright"
-            text " "
+            nbsp
             raw "&copy;"
-            text " "
+            nbsp
             text "Wagz & Wil 2021"
           end
         end

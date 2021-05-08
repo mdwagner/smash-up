@@ -9,7 +9,6 @@ class Shared::LayoutHead < BaseComponent
       title page_title
       css_link asset("css/app.css")
       js_link asset("js/app.js"), defer: "true"
-      yield
       csrf_meta_tags
       responsive_meta_tag
     end
