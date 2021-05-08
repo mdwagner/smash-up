@@ -1,6 +1,5 @@
 {
   "recommendations": [
-    "bradlc.vscode-tailwindcss",
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
     "crystal-lang-tools.crystal-lang"
