@@ -1,3 +1,15 @@
 {
-  "css.validate": false
+  "css.validate": false,
+  "editor.defaultFormatter": null,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "[crystal]": {
+    "editor.defaultFormatter": "crystal-lang-tools.crystal-lang"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
