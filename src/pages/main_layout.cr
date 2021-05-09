@@ -1,5 +1,6 @@
 abstract class MainLayout
   include Lucky::HTMLPage
+  include BreadcrumbHelpers
 
   abstract def content
 
@@ -12,7 +13,7 @@ abstract class MainLayout
       body class: "flex flex-col h-screen bg-gray-100" do
         nav class: "bg-green-700 py-3 px-4 flex justify-between items-center" do
           div class: "flex items-center" do
-            link to: Home::Index, class: "inline-block p-2 text-indigo-200 hover:text-indigo-100" do
+            link to: Home::Index, class: "inline-block p-2" do
               img src: asset("images/Spotify-512.png"), alt: "Spotify logo", width: "55"
             end
           end
@@ -24,6 +25,28 @@ abstract class MainLayout
         end
 
         mount Shared::FlashMessages, flash: context.flash
+
+        if breadcrumbs.size > 0
+          para class: "px-4 py-2" do
+            breadcrumbs.each do |bc|
+              bc_class = "text-green-500 text-2xl"
+
+              if bc[:page]
+                link bc[:name], to: bc[:page].not_nil!, class: "#{bc_class} hover:underline hover:text-green-300"
+              else
+                a class: "#{bc_class} hover:cursor-default" do
+                  text bc[:name]
+                end
+              end
+
+              span class: "last:hidden text-green-500 text-2xl hover:cursor-default" do
+                nbsp
+                text ">"
+                nbsp
+              end
+            end
+          end
+        end
 
         main class: "flex-1 p-4" do
           content

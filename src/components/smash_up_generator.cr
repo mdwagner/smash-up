@@ -6,10 +6,14 @@ class SmashUpGenerator < BaseComponent
       [x["name"].as_s, x["artists"].as_a.map { |t| t["name"].as_s }.join(", ")]
     end || ""
 
-    div class: "flex flex-row space-x-5 text-lg" do
+    div class: "flex flex-col items-center space-y-5 text-5xl md:text-6xl" do
       span artist
       span "+"
       span "#{song} by #{song_by_artists}"
+    end
+
+    div class: "flex flex-row items-center justify-center mt-12" do
+      link "Reload", to: Home::Generator, class: "inline-block py-2 px-4 text-5xl leading-normal rounded-lg text-gray-200 font-semibold hover:text-gray-100 bg-red-700"
     end
   end
 

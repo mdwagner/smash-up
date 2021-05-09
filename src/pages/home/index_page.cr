@@ -1,13 +1,13 @@
 class Home::IndexPage < MainLayout
-  needs run : Bool
-
   def content
-    if run?
-      mount SmashUpGenerator
-    else
-      h1 "Welcome to SmashUp!", class: "text-xl"
-      h2 "a fun game for drunk parties", class: "text-lg"
+    div class: "flex flex-col items-center justify-center space-y-5" do
+      div do
+        h1 "Welcome to SmashUp!", class: "text-5xl"
+        h2 "a fun game for drunk parties", class: "text-4xl"
+      end
+      div class: "flex-row" do
+        link "SmashUp", to: Home::Generator, class: "inline-block py-2 px-4 text-5xl leading-normal rounded-lg text-gray-200 font-semibold hover:text-gray-100 bg-red-700"
+      end
     end
-    link "SmashUp", to: Home::Index.with(run: true), class: "text-red-700 font-semibold hover:text-red-500"
   end
 end
