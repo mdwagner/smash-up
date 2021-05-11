@@ -4,6 +4,6 @@ class Auth::LoginPage < AuthLayout
   end
 
   def content
-    text "Hello World! plz login..."
+    text "Will the real slim shady plz login..."
   end
 end
