@@ -1,14 +1,24 @@
-/* eslint no-console:0 */
+import { start as RailsUjsStart } from "@rails/ujs";
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-// Rails Unobtrusive JavaScript (UJS) is *required* for links in Lucky that use DELETE, POST and PUT.
-// Though it says "Rails" it actually works with any framework.
-require("@rails/ujs").start();
+/**
+ * Rails Unobtrusive JavaScript (UJS) is *required* for links in Lucky that use DELETE, POST and PUT.
+ * Though it says "Rails" it actually works with any framework.
+ */
+RailsUjsStart();
 
-// Turbolinks is optional. Learn more: https://github.com/turbolinks/turbolinks/
-// require("turbolinks").start();
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        {/* Route `path` should match Lucky Page url */}
+        {/* Use React Portal to render to custom elements on page */}
+        <Route path="*"></Route>
+      </Switch>
+    </BrowserRouter>
+  );
+};
 
-// If using Turbolinks, you can attach events to page load like this:
-//
-// document.addEventListener("turbolinks:load", function() {
-//   ...
-// })
+ReactDOM.render(<App />, document.getElementById("root"));

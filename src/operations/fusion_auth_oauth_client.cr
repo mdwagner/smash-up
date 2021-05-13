@@ -20,7 +20,7 @@ module FusionAuthOauthClient
   end
 
   private def init
-    base_uri = Lucky::RouteHelper.settings.base_uri
+    base_uri = BaseURI.url
     callback_path = Auth::Callback.route.path
 
     OAuth2::Client.new(

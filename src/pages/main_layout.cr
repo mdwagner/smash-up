@@ -13,6 +13,8 @@ abstract class MainLayout
       mount Shared::LayoutHead, page_title: "Welcome to SmashUp", context: context
 
       body class: "flex flex-col h-screen bg-gray-100" do
+        div id: "root"
+
         nav class: "bg-green-700 py-3 px-4 flex justify-between items-center" do
           div class: "flex items-center" do
             link to: Home::Index, class: "inline-block p-2" do

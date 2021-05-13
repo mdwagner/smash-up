@@ -38,6 +38,8 @@ mix
   // More info and options (like React support) here:
   // https://github.com/JeffreyWay/laravel-mix/blob/master/docs/mixjs.md
   .js("src/js/app.js", "js")
+  .react()
+  .sourceMaps(false)
 
   .postCss("src/css/app.css", "css", [require("tailwindcss")])
 
