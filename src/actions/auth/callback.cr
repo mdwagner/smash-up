@@ -1,4 +1,6 @@
 class Auth::Callback < BrowserAction
+  include Auth::AllowGuests
+
   get "/callback" do
     code = params.get?(:code)
 
@@ -16,7 +18,7 @@ class Auth::Callback < BrowserAction
 
       Log.info { token }
 
-      session.set(SESSION_KEY, token)
+      session.set(Auth::CurrentUser::SESSION_KEY, token)
     rescue error : JWT::VerificationError
       flash.failure = "verification error"
       # TODO: redirect to error page
@@ -32,5 +34,8 @@ class Auth::Callback < BrowserAction
     end
 
     redirect to: Home::Generator
+
+    # TODO
+    # Auth::RequestedPath.redirect_to_originally_requested_path(self, fallback: Home::Index)
   end
 end

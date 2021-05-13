@@ -10,4 +10,12 @@ module FusionAuthTokenDecoder
       aud: ENV["FUSIONAUTH_CLIENT_ID"]
     )
   end
+
+  def decode?(token)
+    begin
+      decode(token)
+    rescue
+      nil
+    end
+  end
 end

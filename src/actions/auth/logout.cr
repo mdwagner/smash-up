@@ -1,6 +1,8 @@
 class Auth::Logout < BrowserAction
+  include Auth::AllowGuests
+
   get "/logout" do
-    session.get?(SESSION_KEY).try do |token|
+    session.get?(Auth::CurrentUser::SESSION_KEY).try do |token|
       FusionAuthOauthClient.logout(token) do |response|
         case response.status_code
         when 302
