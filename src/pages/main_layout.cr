@@ -19,8 +19,11 @@ abstract class MainLayout
           end
 
           div class: "flex items-center space-x-1 sm:space-x-3" do
-            link "Login", to: Auth::Login::New, class: "inline-block p-2 text-indigo-200 hover:text-indigo-100"
-            link "Sign Up", to: Auth::SignUp::New, class: "inline-block py-2 px-4 whitespace-nowrap text-yellow-700 bg-yellow-400 rounded hover:bg-yellow-300 hover:text-yellow-800 transition ease-in duration-150"
+            link "Login", to: Auth::Login, class: "inline-block p-2 text-indigo-200 hover:text-indigo-100"
+            link "Logout", to: Auth::Logout, class: "inline-block p-2 text-indigo-200 hover:text-indigo-100"
+            # token = session.get?(SESSION_KEY)
+
+            # link "Sign Up", to: Auth::SignUp::New, class: "inline-block py-2 px-4 whitespace-nowrap text-yellow-700 bg-yellow-400 rounded hover:bg-yellow-300 hover:text-yellow-800 transition ease-in duration-150"
           end
         end
 

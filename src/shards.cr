@@ -6,3 +6,7 @@ Dotenv.load?
 require "avram"
 require "lucky"
 require "carbon"
+require "jwt"
+
+# standard lib
+require "oauth2"
