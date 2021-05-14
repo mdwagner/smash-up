@@ -13,7 +13,7 @@ Lucky::CookieJar.configure do |settings|
     cookie.http_only(true)
 
     # Restrict cookies to a first-party or same-site context
-    cookie.samesite(:lax)
+    cookie.samesite(:strict)
 
     # Set all cookies to the root path by default
     cookie.path("/")
