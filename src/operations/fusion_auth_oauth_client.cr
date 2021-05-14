@@ -5,14 +5,10 @@ module FusionAuthOauthClient
     init.get_authorize_uri
   end
 
-  def logout(token)
-    http_client = HTTP::Client.new(ENV["FUSIONAUTH_HOST"], tls: true)
-    http_client.before_request do |request|
-      request.headers["Authorization"] = "Bearer #{token}"
-    end
-    http_client.get "/oauth2/logout" do |response|
-      yield response
-    end
+  def logout_url
+    uri = URI.parse("#{ENV["FUSIONAUTH_URL"]}/oauth2/logout")
+    uri.query = URI::Params.encode({client_id: ENV["FUSIONAUTH_CLIENT_ID"]})
+    uri.to_s
   end
 
   def get_access_token(code)
@@ -20,7 +16,7 @@ module FusionAuthOauthClient
   end
 
   private def init
-    base_uri = BaseURI.url
+    base_uri = AppConfig.base_uri
     callback_path = Auth::Callback.route.path
 
     OAuth2::Client.new(

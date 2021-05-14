@@ -1,10 +1,10 @@
-class BaseURI
+class AppConfig
   Habitat.create do
     setting lucky_server_url : String
     setting lucky_server_proxy_url : String
   end
 
-  def self.url
+  def self.base_uri
     if Lucky::Env.production?
       settings.lucky_server_url
     else
@@ -13,7 +13,7 @@ class BaseURI
   end
 end
 
-BaseURI.configure do |settings|
+AppConfig.configure do |settings|
   settings.lucky_server_url = "http://localhost:#{Lucky::ServerSettings.port}"
   settings.lucky_server_proxy_url = "http://localhost:3001"
 end

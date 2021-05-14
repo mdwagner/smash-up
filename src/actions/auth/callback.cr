@@ -10,15 +10,19 @@ class Auth::Callback < BrowserAction
       return head :forbidden
     end
 
-    access_token = FusionAuthOauthClient.get_access_token(code)
-    token = access_token.access_token
-
     begin
+      access_token = FusionAuthOauthClient.get_access_token(code)
+      token = access_token.access_token
+
       FusionAuthTokenDecoder.decode(token)
 
       Log.info { token }
 
       session.set(Auth::CurrentUser::SESSION_KEY, token)
+    rescue error : OAuth2::Error
+      flash.failure = "oauth2 error: #{error.message}"
+      # TODO: redirect to error page
+      return head :forbidden
     rescue error : JWT::VerificationError
       flash.failure = "verification error"
       # TODO: redirect to error page
@@ -33,9 +37,6 @@ class Auth::Callback < BrowserAction
       return head :forbidden
     end
 
-    redirect to: Home::Generator
-
-    # TODO
-    # Auth::RequestedPath.redirect_to_originally_requested_path(self, fallback: Home::Index)
+    Auth::RequestedPath.redirect_to_originally_requested_path(self, fallback: Home::Generator)
   end
 end
