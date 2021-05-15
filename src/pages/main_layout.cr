@@ -10,8 +10,6 @@ abstract class MainLayout < BaseLayout
       mount Shared::LayoutHead, page_title: "SmashUp", context: context
 
       mount Shared::Body do
-        mount Shared::React
-
         mount Shared::Navbar do
           div class: "flex items-center" do
             link to: Home::Index, class: "inline-block p-2" do
