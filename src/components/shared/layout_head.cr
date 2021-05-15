@@ -8,6 +8,8 @@ class Shared::LayoutHead < BaseComponent
       utf8_charset
       title page_title
       css_link asset("css/app.css")
+      js_link dynamic_asset("js/manifest.js"), defer: "true"
+      js_link dynamic_asset("js/vendor.js"), defer: "true"
       js_link asset("js/app.js"), defer: "true"
       csrf_meta_tags
       responsive_meta_tag

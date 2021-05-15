@@ -12,18 +12,15 @@ module.exports = {
       match: /<\/head>/i,
       fn: function (snippet, match) {
         return snippet + match;
-      }
-    }
+      },
+    },
   },
-  files: [
-    "public/css/**/*.css",
-    "public/js/**/*.js"
-  ],
+  files: ["public/css/**/*.css", "public/js/**/*.js"],
   watchEvents: ["change"],
   open: false,
   browser: "default",
   ghostMode: false,
   ui: false,
   online: false,
-  logConnections: false
+  logConnections: false,
 };

@@ -1,5 +1,5 @@
 import { start as RailsUjsStart } from "@rails/ujs";
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 

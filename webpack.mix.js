@@ -37,9 +37,9 @@ mix
 
   // More info and options (like React support) here:
   // https://github.com/JeffreyWay/laravel-mix/blob/master/docs/mixjs.md
-  .js("src/js/app.js", "js")
+  .js("src/js/app.jsx", "js")
   .react()
-  .sourceMaps(false)
+  .extract()
 
   .postCss("src/css/app.css", "css", [require("tailwindcss")])
 
@@ -52,6 +52,8 @@ mix
     // Stops Mix from clearing the console when compilation succeeds
     clearConsole: false,
   })
+
+  .sourceMaps(false)
 
   // Add assets to the manifest
   .version(["public/assets"])
