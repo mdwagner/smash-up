@@ -3,7 +3,7 @@
 # https://luckyframework.org/guides/http-and-routing/error-handling
 class Errors::Show < Lucky::ErrorAction
   default_format :html
-  DEFAULT_MESSAGE = "Something went wrong."
+  include Errors::RenderError
   include Errors::Render
   include Errors::Report
 
@@ -30,20 +30,5 @@ class Errors::Show < Lucky::ErrorAction
     else
       render_error_json
     end
-  end
-
-  private def render_error_page(
-    message : String = DEFAULT_MESSAGE,
-    status : HTTP::Status = HTTP::Status::INTERNAL_SERVER_ERROR
-  )
-    context.response.status_code = status.code
-    html Errors::ShowPage, message: message, status: status
-  end
-
-  private def render_error_json(
-    hash = {"message" => DEFAULT_MESSAGE},
-    status : HTTP::Status = HTTP::Status::INTERNAL_SERVER_ERROR
-  )
-    json hash, status: status.code
   end
 end
