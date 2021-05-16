@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "JWT Secret: $FUSIONAUTH_HMAC_SECRET"
+echo "Hasura Secret: $HASURA_GRAPHQL_ADMIN_SECRET"
