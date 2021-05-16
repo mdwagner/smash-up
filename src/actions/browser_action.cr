@@ -2,6 +2,9 @@ abstract class BrowserAction < Lucky::Action
   include Lucky::ProtectFromForgery
   accepted_formats [:html, :json], default: :html
 
+  # This module provides render_error methods
+  include Errors::RenderError
+
   # This module provides current_user methods
   include Auth::CurrentUser
 

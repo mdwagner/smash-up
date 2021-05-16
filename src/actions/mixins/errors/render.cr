@@ -3,12 +3,12 @@ module Errors::Render
     if html?
       render_error_page(
         "Sorry, we couldn't find that page.",
-        status: HTTP::Status::NOT_FOUND
+        status: :not_found
       )
     else
       render_error_json(
         "Not found",
-        status: HTTP::Status::NOT_FOUND
+        status: :not_found
       )
     end
   end
@@ -25,7 +25,7 @@ module Errors::Render
           "details" => error.renderable_details,
           "param"   => error.invalid_attribute_name,
         },
-        status: HTTP::Status::BAD_REQUEST
+        status: :bad_request
       )
     end
   end
