@@ -1,7 +1,7 @@
 abstract class MainLayout < BaseLayout
   include BreadcrumbHelpers
 
-  needs current_user : JSON::Any?
+  needs current_user : User?
 
   abstract def content
 

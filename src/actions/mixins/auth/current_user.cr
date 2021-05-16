@@ -6,7 +6,7 @@ module Auth::CurrentUser
   # This method is often overridden by different modules/pipes. For example,
   # When sign in is required this method is typically overridden by calling
   # `not_nil!` since the user will always be returned.
-  def current_user : JSON::Any?
+  def current_user : User?
     current_user?
   end
 
@@ -14,10 +14,10 @@ module Auth::CurrentUser
   #
   # This method should *not* be overridden. If you want to require a current user,
   # override the `current_user` method (note no `?`).
-  def current_user? : JSON::Any?
+  def current_user? : User?
     session.get?(SESSION_KEY).try do |token|
       FusionAuthTokenDecoder.decode?(token).try do |(payload, header)|
-        payload
+        User.from_json(payload.to_json)
       end
     end
   end
