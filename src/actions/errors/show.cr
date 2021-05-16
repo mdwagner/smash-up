@@ -3,8 +3,8 @@
 # https://luckyframework.org/guides/http-and-routing/error-handling
 class Errors::Show < Lucky::ErrorAction
   default_format :html
-  include Errors::Render
   include Errors::RenderError
+  include Errors::Render
   include Errors::Report
 
   # Always keep this below other 'render' methods
