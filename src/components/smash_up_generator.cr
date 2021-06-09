@@ -13,7 +13,7 @@ class SmashUpGenerator < BaseComponent
     end
 
     div class: "flex flex-row items-center justify-center mt-12" do
-      link "Reload", to: Home::Generator, class: "inline-block py-2 px-4 text-5xl leading-normal rounded-lg text-gray-200 font-semibold hover:text-gray-100 bg-red-700"
+      link "Reload", to: Home::Index, class: "inline-block py-2 px-4 text-5xl leading-normal rounded-lg text-gray-200 font-semibold hover:text-gray-100 bg-red-700"
     end
   end
 

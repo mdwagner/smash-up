@@ -1,8 +1,6 @@
 abstract class MainLayout < BaseLayout
   include BreadcrumbHelpers
 
-  needs current_user : User?
-
   abstract def content
 
   def render
@@ -15,10 +13,6 @@ abstract class MainLayout < BaseLayout
             link to: Home::Index, class: "inline-block p-2" do
               img src: asset("images/Spotify-512.png"), alt: "Spotify logo", width: "55"
             end
-          end
-
-          div class: "flex items-center space-x-1 sm:space-x-3" do
-            link "Logout", to: Auth::Logout, class: "inline-block p-2 text-indigo-200 hover:text-indigo-100"
           end
         end
 
